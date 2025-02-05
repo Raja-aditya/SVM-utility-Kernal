@@ -1,0 +1,964 @@
+1. Importing the packages
+2. Appending the utility kernel and PCA feature values
+3. Data Sampler 
+	- subsampling the long data
+	- generating balanced class data for training
+4. Define utility kernel
+5. Applying PCA with 95% explained_variance_ratio_
+6. Exploring the dataset 
+    - CLN
+    - WSI
+    - EXP
+    - CNV
+7. Combining the data 
+    - CLN_EXP   
+    - CLN_CNV   
+    - CLN_WSI   
+    - EXP_CNV  
+    - EXP_WSI    
+    - CNV_WSI   
+    - CLN_EXP_CNV 
+    - CLN_EXP_WSI  
+    - EXP_CNV_WSI  
+    - CNV_CLN_WSI  
+    - multimodal - WSI,CLN,CNV,EXP
+8. Visualization Data using Seaborn and Matplotlib
+9. Splitting the data to train and test
+
+
+10. Building the model
+    Survival Prediction Models at 5-Year Survival
+        CLN
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets 
+        WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        WSI + CLN + CNV + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+
+    Survival Prediction Models at 6-Year Survival
+        CLN
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets 
+        WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+
+        CNV + CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        WSI + CLN + CNV + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+    Survival Prediction Models at 7-Year Survival
+        CLN
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets 
+        WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+
+        CNV + CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        WSI + CLN + CNV + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+    Survival Prediction Models at 8-Year Survival
+        CLN
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets 
+        WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        WSI + CLN + CNV + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+    Survival Prediction Models at 9-Year Survival
+        CLN
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets 
+        WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        CLN + EXP + CNV
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        EXP + CNV + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+
+        CNV + CLN + WSI
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+        WSI + CLN + CNV + EXP
+            SVM - RBF
+            SVM - Poly
+            SVM - Utility Kernel
+            SVM - Linear
+            SVM - Sigmoid
+            Random Forest
+            Decision Tree
+            Naive Bayes
+            Voting Classifier (RF + SVC + DT)
+            VGGNets
+            ResNets
+            DesneNets
+            
+10. Training and Building the model
+11. Flask Framework with Sqlite for signup and signin
+12. User gives input
+13. the given input preprocessed and with trained model is used for predicting the readmission
+14. final outcome is displayed
+
+Dataset Used Here:
+https://github.com/nikhilaryan92/utilitykernel/tree/main/data
+
+Extension
+----------
+In the base paper the author mentioned for analysis of the four diff. Breast dataset along with combination of the dataset as mentioned with Machine learning models like SVM - RBF, SVM - Poly,SVM - Utility Kernel,SVM - Linear,SVM - Sigmoid,Random Forest,Decision Tree,Naive Bayes, Voting Classifier (RF + SVC + DT), VGGNets, ResNets, Desne Nets as per author, 
+As an extension we applied an ensemble method  combining the predictions of multiple individual models to produce a more robust and accurate final prediction. 
+However, we can further enhance the performance by exploring other ensemble techniques such as Voting Classifier with RF + SVC + DT 
+As an extension we can build the front end using the flask framework for user testing and with user authentication.
